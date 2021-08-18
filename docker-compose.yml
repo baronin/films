@@ -1,0 +1,13 @@
+version: "2.4"
+
+services:
+  mongo:
+    image: mongo:4.2
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-mongo:/data/db
+
+volumes:
+  data-mongo:

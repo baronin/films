@@ -1,0 +1,41 @@
+{
+  "name": "js_advanced_training",
+  "version": "1.0.1",
+  "description": "Bettroot academy JavaScript Advanced course",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development PORT=4000 nodemon --exec babel-node ./src/index.js",
+    "build": "babel src --out-dir ./build"
+  },
+  "keywords": [
+    "Bettoot",
+    "express",
+    "resfull",
+    "api"
+  ],
+  "author": "Beetroot academy",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "colors": "^1.4.0",
+    "config": "^3.3.6",
+    "connect-pause": "^0.1.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.12",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+    "@babel/preset-env": "^7.13.12",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.7"
+  }
+}

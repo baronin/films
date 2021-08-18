@@ -1,0 +1,23 @@
+{
+  "name": "course",
+  "version": "1.0.0",
+  "description": "Java Script advanced course",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "start": "npm-run-all --parallel server client",
+    "setup": "npm install && npm run setup:client && npm run setup:server",
+    "setup:client": "cd client && npm install",
+    "setup:server": "cd server && npm install"
+  },
+  "keywords": [],
+  "author": "Beetroot Academy",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

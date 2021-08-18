@@ -1,0 +1,78 @@
+Image ->  mongo
+port -> 27017
+
+Все команды выполняются в терминале из того каталога, в котором находится файл docker-compose.yml
+
+----------------------------------------------
+Запуск docker mongo image      | make up
+---------------------------------------------
+Остановка  docker mongo image  |  make down 
+---------------------------------------------
+Работа в контейнере cli        | make cli
+---------------------------------------------
+		 		
+
+------------------------------------------------ CLI 
+# mongo 
+> show dbs
+> use playground
+> db            // какая база сейчас активная
+> db.stats()    // статистика по базам
+> show collections  // show collectionses titles of db
+> db.collection.count() // count documents in collection
+
+// ---------------------------------------  CREATE
+insertOne(document, callback)
+
+> db.users.insertOne({name: "Bill", age: 30})
+
+---------------------------------------------//
+
+// ---------------------------------------  READ
+> db.users.find();
+> db.films.find().pretty()
+> db.films.findOne({title: "The Academy of Magic"});
+
+---------------------------------------------//
+
+// ---------------------------------------  UPDATE
+updateOne(filter, {$set: {data}}, [upset: true])
+
+> db.users.findOneAndUpdate({email: "admin@com.ua"}, {$set: {role: "admin"}})
+
+---------------------------------------------//
+
+
+// ---------------------------------------  DELETE
+
+> db.dropDatabase()   //удаление активной базы 
+> db.films.drop()    //удаление collection
+> db.films.deleteOne({title: "The Academy of Magic"})
+
+> db.users.remove({})  // remove all documents
+> db.users.deleteOne({email: "u2@com.ua"})
+---------------------------------------------//
+
+// ---------------------------------------  insert film
+db.films.insertOne({ title: "Butterfly Tale", director: "Vince D'Amato", duration: 82, price: 78, img: "/img/butterfly.jpg", featured: false, description: "Chris Marshall met the girl he was going to kill on a warm night in early June, when one of the colleges in Oxford was holding its summer ball. A chance meeting with Jenny at an Oxford"});
+---------------------------------------------//
+
+// ---------------------------------------  insert film
+db.films.insertOne({ title: "Glass", director: "Vince D'Amato", duration: 90, price: 87.4, img: "/img/glass.jpg", featured: false, description: "Is a film about a young man, Atlas, and his continuous struggle with early-onset Alzheimer's. Seen through his eyes, his life is a puzzle he desperately tries to piece together."});
+---------------------------------------------//
+
+
+// ---------------------------------------  insert 3 films
+try {
+   db.films.insertMany( [
+      { title: "Legend of the Seeker", director: "Stephen Tolkin", duration: 93, price: 48.3, img: "/img/seeker.jpg", featured: false, description: "After the mysterious murder of his father, a son's search for answers begins a momentous fight against tyranny."},
+      {title: "Siji: Driver", director: "David Chai", duration: 88, price: 35.2, img: "/img/siji.jpg", featured: true, description: "After a driver rescues a passenger from an abusive boyfriend, he discovers she is a human trafficking victim. But in order to free her, he must give up the thing he loves the most."},
+      { title: "Aquaman",director: "James Wan", duration: 112, price: 55.2, img: "/img/aquaman.jpg", featured: false, description: "Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land."}
+ ]);
+}catch (e) {
+   print (e);
+}
+
+---------------------------------------------//
+
+

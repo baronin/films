@@ -16,7 +16,6 @@
   "author": "Beetroot academy",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
     "colors": "^1.4.0",
     "config": "^3.3.6",
     "connect-pause": "^0.1.0",

@@ -1,5 +1,4 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
 import isEmail from 'validator/lib/isEmail';
 
 const router = express.Router();
@@ -8,7 +7,8 @@ function validate(user, db, cb) {
   const errors = {};
 
   db.collection('users').findOne({ email: user.email }, (err, doc) => {
-    if (err) return { isValid: false, errors: { global: `Database error ${err}` } };
+    if (err)
+      return { isValid: false, errors: { global: `Database error ${err}` } };
 
     if (doc) errors.email = 'User with such email already exists';
     if (!user.email) errors.email = "Can't be blank";
@@ -20,7 +20,7 @@ function validate(user, db, cb) {
 
     return cb({
       isValid: Object.keys(errors).length === 0,
-      errors
+      errors,
     });
   });
 }
@@ -28,8 +28,8 @@ function validate(user, db, cb) {
 router.post('/', (req, res) => {
   const user = {
     email: req.body.user.email,
-    password: bcrypt.hashSync(req.body.user.password, 10),
-    role: 'user'
+    password: req.body.user.password,
+    role: 'user',
   };
   const db = req.app.get('db');
 
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
     if (!isValid) {
       res.status(400).json({ errors });
     } else {
-      db.collection('users').insertOne(user, err => {
+      db.collection('users').insertOne(user, (err) => {
         if (err) {
           res.status(500).json({ errors: { global: err } });
           return;

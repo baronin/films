@@ -1,14 +1,14 @@
 {
-  "name": "js_advanced_training",
-  "version": "1.0.1",
-  "description": "Bettroot academy JavaScript Advanced course",
-  "main": "index.js",
+  "name": "@films/server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Beetroot academy JavaScript Advanced course",
   "scripts": {
-    "start": "cross-env NODE_ENV=development PORT=4000 nodemon --exec babel-node ./src/index.js",
+    "start": "cross-env NODE_ENV=development PORT=4000 nodemon --exec babel-node src/index.js",
     "build": "babel src --out-dir ./build"
   },
   "keywords": [
-    "Bettoot",
+    "beetroot",
     "express",
     "resfull",
     "api"
@@ -19,6 +19,7 @@
     "colors": "^1.4.0",
     "config": "^3.3.6",
     "connect-pause": "^0.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.4.0",

@@ -5,7 +5,7 @@ import morgan from "morgan";
 import colors from "colors";
 import dotenv from "dotenv";
 import sleep from "./middlewares/sleep";
-
+import cors from "cors";
 import users from "./routes/users";
 import auth from "./routes/auth";
 import films from "./routes/films";
@@ -13,7 +13,12 @@ import authfilms from "./routes/authfilms";
 import upload from "./routes/upload";
 
 const app = express();
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+}
 
+app.use(cors(corsOptions));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }

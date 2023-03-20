@@ -8,13 +8,13 @@
     "node": "^16.19.0"
   },
   "workspaces": [
-    "client",
+    "client-react",
     "server"
   ],
   "scripts": {
-    "start:client": "npm run start --workspace=client",
+    "start:client": "npm run start --workspace=client-react",
     "start:server": "npm run start --workspace=server",
-    "start": "npm-run-all --parallel start:client start:server"
+    "start": "npm-run-all --parallel start:client-react start:server"
   },
   "keywords": [],
   "author": "Beetroot Academy",

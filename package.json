@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": "^16.19.0"
+    "node": "^18.12.0"
   },
   "workspaces": [
     "client-react",
@@ -14,7 +14,10 @@
   "scripts": {
     "start:client": "npm run start --workspace=client-react",
     "start:server": "npm run start --workspace=server",
-    "start": "npm-run-all --parallel start:client-react start:server"
+    "start": "npm-run-all --parallel start:client start:server",
+    "setup": "npm install && npm run setup:client && npm run setup:server",
+    "setup:client": "cd client-react && npm install",
+    "setup:server": "cd server && npm install"
   },
   "keywords": [],
   "author": "Beetroot Academy",

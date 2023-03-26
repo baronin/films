@@ -1,13 +1,40 @@
-version: "2.4"
+version: "3.8"
 
 services:
+  client:
+    build:
+      context: .
+      dockerfile: client-react/Dockerfile
+    image: films-client
+    ports:
+      - "3000:3000"
+    networks:
+      - films-network
+    command: npm run start --workspace=client-react
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    image: films-server
+    ports:
+      - "4000:4000"
+    networks:
+      - films-network
+    environment:
+      MONGO_URI: mongodb://mongo/films
+    command: npm run start --workspace=server
   mongo:
     image: mongo:4.2
     container_name: mongo
     ports:
       - "27017:27017"
     volumes:
-      - data-mongo:/data/db
+      - mongo-data:/data/db
+    networks:
+      - films-network
+
+networks:
+  films-network:
 
 volumes:
-  data-mongo:
+  mongo-data:
